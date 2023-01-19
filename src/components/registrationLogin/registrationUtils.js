@@ -1,0 +1,38 @@
+export const registrationUtils = (userData) => [
+  {
+    textId: 1,
+    id: "name",
+    name: "name",
+    label: "Name",
+    type: "text",
+    margin: "normal",
+    value: userData.name,
+  },
+  {
+    textId: 2,
+    id: "email",
+    name: "email",
+    label: "Email Address",
+    type: "email",
+    margin: "normal",
+    value: userData.email,
+  },
+  {
+    textId: 3,
+    id: "password",
+    name: "password",
+    label: "Password",
+    type: "password",
+    margin: "normal",
+    value: userData.password,
+  },
+  {
+    textId: 4,
+    id: "cpassword",
+    name: "cpassword",
+    label: "Confirm Password",
+    type: "password",
+    margin: "normal",
+    value: userData.cpassword,
+  },
+];

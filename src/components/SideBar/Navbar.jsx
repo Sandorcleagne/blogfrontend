@@ -15,12 +15,15 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import { Link, Outlet } from "react-router-dom";
-import { SideBarData } from "./SideBarData";
+import { SideBarData, LoggedinSidebarData } from "./SideBarData";
 import { DrawerHeader, Drawer, AppBar } from "./SidebarStyles";
 const Navbar = () => {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
-
+  const getToken = localStorage.getItem("token");
+  const sideBarDataForMap =
+    getToken !== null ? LoggedinSidebarData : SideBarData; // sidebar data for map
+  console.log("getToken", getToken);
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -63,7 +66,7 @@ const Navbar = () => {
           </DrawerHeader>
           <Divider />
           <List>
-            {SideBarData.map((items, index) => (
+            {sideBarDataForMap.map((items, index) => (
               <Link
                 to={items.path}
                 style={{ textDecoration: "none", color: "black" }}
