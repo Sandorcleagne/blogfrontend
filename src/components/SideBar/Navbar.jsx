@@ -23,7 +23,6 @@ const Navbar = () => {
   const getToken = localStorage.getItem("token");
   const sideBarDataForMap =
     getToken !== null ? LoggedinSidebarData : SideBarData; // sidebar data for map
-  console.log("getToken", getToken);
   const handleDrawerOpen = () => {
     setOpen(true);
   };

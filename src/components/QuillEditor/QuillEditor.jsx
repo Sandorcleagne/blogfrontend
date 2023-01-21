@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
-import { QuillContainer } from "./QuillEditorStyle";
+import { QuillContainer, QuillStyle } from "./QuillEditorStyle";
 const QuillEditor = () => {
   const [value, setValue] = useState("");
 
   return (
     <QuillContainer>
       <ReactQuill
+        style={QuillStyle}
         theme="snow"
         value={value}
         onChange={setValue}
