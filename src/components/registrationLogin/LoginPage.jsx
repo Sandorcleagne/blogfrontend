@@ -29,6 +29,7 @@ const LoginPage = () => {
   };
   const sendData = async () => {
     const data = await loginUser(loginData);
+    console.log(data);
     const { status, msg } = data.data.baseResponse;
     if (status === 1) {
       setErrors({
@@ -38,6 +39,7 @@ const LoginPage = () => {
       });
       navigate("/createblogs");
       localStorage.setItem("token", data.data.response.token);
+      localStorage.setItem("userInfo", data.data.response);
     } else {
       setErrors({
         status: true,

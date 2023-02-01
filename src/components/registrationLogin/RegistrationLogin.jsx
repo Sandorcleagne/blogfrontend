@@ -5,7 +5,7 @@ import {
   imageContainer,
   formInnerContainer,
 } from "./registrationStyles";
-import FormImage from "../../images/loginImage2.png";
+import FormImage from "../../images/login3.png";
 import Image from "../custom/Image";
 import AuthForm from "./AuthForm";
 const RegistrationLogin = () => {

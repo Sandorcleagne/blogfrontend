@@ -41,6 +41,7 @@ const RegistrationPage = () => {
         cpassword: "",
       });
       navigate("/createblogs");
+      localStorage.setItem("token", data.data.response.token);
     } else {
       setErrors({
         status: true,
