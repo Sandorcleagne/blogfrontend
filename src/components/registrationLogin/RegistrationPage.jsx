@@ -1,4 +1,4 @@
-import { Alert, Box, Button, TextField } from "@mui/material";
+import { Alert, Box, TextField } from "@mui/material";
 import React, { useState } from "react";
 import { useRegisterUserMutation } from "../../api/authApi/registration";
 import {
@@ -7,6 +7,7 @@ import {
 } from "./registrationStyles";
 import { registrationUtils } from "./registrationUtils";
 import { useNavigate } from "react-router-dom";
+import CustomBtn from "../custom/CustomBtn";
 const RegistrationPage = () => {
   const [registerUser] = useRegisterUserMutation();
   const [userData, setUserData] = useState({
@@ -42,6 +43,7 @@ const RegistrationPage = () => {
       });
       navigate("/createblogs");
       localStorage.setItem("token", data.data.response.token);
+      localStorage.setItem("userInfo", JSON.stringify(data.data.response));
     } else {
       setErrors({
         status: true,
@@ -67,14 +69,13 @@ const RegistrationPage = () => {
         />
       ))}
       <Box textAlign="center">
-        <Button
+        <CustomBtn
           type="submit"
           variant="contained"
           sx={loginFromButtonContainer}
           onClick={sendData}
-        >
-          Register
-        </Button>
+          title="Register"
+        />
       </Box>
 
       {errors.status ? <Alert severity={errors.type}>{errors.msg}</Alert> : ""}

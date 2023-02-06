@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Alert, Box, Button, TextField } from "@mui/material";
+import { Alert, Box, TextField } from "@mui/material";
 import { loginUtils } from "./loginUtils";
 import {
   loginFormMainContainer,
@@ -7,6 +7,7 @@ import {
 } from "./registrationStyles";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useLoginUserMutation } from "../../api/authApi/loginUser";
+import CustomBtn from "../custom/CustomBtn";
 const LoginPage = () => {
   const [loginUser] = useLoginUserMutation();
   const [loginData, setLoginData] = useState({
@@ -39,7 +40,7 @@ const LoginPage = () => {
       });
       navigate("/createblogs");
       localStorage.setItem("token", data.data.response.token);
-      localStorage.setItem("userInfo", data.data.response);
+      localStorage.setItem("userInfo", JSON.stringify(data.data.response));
     } else {
       setErrors({
         status: true,
@@ -66,14 +67,13 @@ const LoginPage = () => {
         />
       ))}
       <Box textAlign="center">
-        <Button
+        <CustomBtn
           type="submit"
           variant="contained"
           sx={loginFromButtonContainer}
           onClick={sendData}
-        >
-          Login
-        </Button>
+          title="Login"
+        />
       </Box>
       <NavLink to="/">Forgot Pasword?</NavLink>
       {errors.status ? <Alert severity={errors.type}>{errors.msg}</Alert> : ""}

@@ -3,11 +3,13 @@ import { setupListeners } from "@reduxjs/toolkit/query";
 import { registrationApi } from "../api/authApi/registration";
 import { loginApi } from "../api/authApi/loginUser";
 import authReducer from "../features/authSlice";
+import blogReducer from "../features/blogSlice";
 const store = configureStore({
   reducer: {
     [registrationApi.reducerPath]: registrationApi.reducer,
     [loginApi.reducerPath]: registrationApi.reducer,
     auth: authReducer,
+    blog: blogReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(

@@ -1,17 +1,22 @@
-import React, { useState } from "react";
+import React from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
+import { useDispatch, useSelector } from "react-redux";
+import { addBlogContent } from "../../features/blogSlice";
 import { QuillContainer, QuillStyle } from "./QuillEditorStyle";
 const QuillEditor = () => {
-  const [value, setValue] = useState("");
-
+  const blogContent = useSelector((state) => state.blog.blogContent);
+  const dispatch = useDispatch();
+  const handelChange = (html) => {
+    dispatch(addBlogContent(html));
+  };
   return (
     <QuillContainer>
       <ReactQuill
         style={QuillStyle}
         theme="snow"
-        value={value}
-        onChange={setValue}
+        value={blogContent}
+        onChange={handelChange}
         modules={{
           toolbar: {
             container: [

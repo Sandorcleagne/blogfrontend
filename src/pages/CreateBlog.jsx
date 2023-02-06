@@ -11,8 +11,7 @@ const CreateBlog = () => {
     const getToken = localStorage.getItem("token");
     setCheckToken(getToken);
   };
-  const userInfo = localStorage.getItem("userInfo");
-  console.log("userInfo", userInfo);
+  // const userInfo = localStorage.getItem("userInfo");
   useEffect(() => {
     checkAuth();
   }, []);
