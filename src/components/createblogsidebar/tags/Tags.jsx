@@ -13,10 +13,8 @@ export default function CheckboxesTags() {
   const dispatch = useDispatch();
   const getBlogCategories = (params) => {
     if (params.InputProps.startAdornment !== undefined) {
-      // console.log("params", params.InputProps.startAdornment);
       const paramValue = params.InputProps.startAdornment;
       const tags = paramValue.map((state) => state.props.label);
-      console.log("tags", tags);
       dispatch(addBlogCategories(tags));
     }
   };

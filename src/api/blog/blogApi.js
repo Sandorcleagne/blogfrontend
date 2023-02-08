@@ -7,14 +7,17 @@ export const blogApi = createApi({
   endpoints: (builder) => ({
     addBlog: builder.mutation({
       query: (blogData) => {
+        const { blogContent, blogCategories, blogTitle, authorName, authorId } =
+          blogData;
         return {
           url: `createblog`,
           method: "POST",
           body: {
-            blogTitle: "test title now",
-            blogCategory: ["sports", "Cricket"],
-            blogContent: "test content",
-            authorName: "Harsh Joshi",
+            blogTitle: blogContent,
+            blogCategory: blogCategories,
+            blogContent: blogTitle,
+            authorName: authorName,
+            authorId: authorId,
           },
           headers: { "Content-Type": "application/json" },
         };
