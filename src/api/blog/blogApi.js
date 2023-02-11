@@ -4,6 +4,7 @@ export const blogApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: "http://localhost:8080/",
   }),
+  tagTypes: ["blogs"],
   endpoints: (builder) => ({
     addBlog: builder.mutation({
       query: (blogData) => {
@@ -13,16 +14,22 @@ export const blogApi = createApi({
           url: `createblog`,
           method: "POST",
           body: {
-            blogTitle: blogContent,
+            blogTitle: blogTitle,
             blogCategory: blogCategories,
-            blogContent: blogTitle,
+            blogContent: blogContent,
             authorName: authorName,
             authorId: authorId,
           },
           headers: { "Content-Type": "application/json" },
         };
       },
+      invalidatesTags: ["blogs"],
+    }),
+
+    getAllBlogs: builder.query({
+      query: () => ({ url: `getallblogs`, method: "GET" }),
+      providesTags: ["blogs"],
     }),
   }),
 });
-export const { useAddBlogMutation } = blogApi;
+export const { useAddBlogMutation, useGetAllBlogsQuery } = blogApi;

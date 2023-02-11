@@ -28,7 +28,7 @@ const AddBlogBtn = () => {
       authorId: userId,
     };
     const data = await addBlog(blogData);
-    console.log("data", data);
+    console.log(data);
     dispatch(addBlogTitle(""));
     dispatch(addBlogContent(""));
     dispatch(addBlogCategories([]));

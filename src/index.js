@@ -10,7 +10,7 @@ const theme = createTheme({
     primary: {
       main: "#494985",
     },
-    // mode: "dark",
+    mode: "dark",
   },
 });
 const root = ReactDOM.createRoot(document.getElementById("root"));
